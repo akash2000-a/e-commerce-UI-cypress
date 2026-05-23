@@ -1,0 +1,25 @@
+{
+  "name": "ecommerce-ui-automation-cypress",
+  "version": "1.0.0",
+  "description": "End-to-end UI automation framework for e-commerce workflows using Cypress, JavaScript, Page Object Model, and CI-ready architecture.",
+  "main": "cypress.config.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akash2000-a/e-commerce-UI-cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/akash2000-a/e-commerce-UI-cypress/issues"
+  },
+  "homepage": "https://github.com/akash2000-a/e-commerce-UI-cypress#readme",
+  "devDependencies": {
+    "cypress": "^15.15.0"
+  }
+}

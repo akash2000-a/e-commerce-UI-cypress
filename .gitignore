@@ -144,3 +144,6 @@ vite.config.ts.timestamp-*
 
 # MD files
 steps.md
+
+# jsconfig
+jsconfig.json
