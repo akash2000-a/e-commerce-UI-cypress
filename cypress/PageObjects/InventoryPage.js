@@ -17,8 +17,16 @@ class InventoryPage {
         // Validate button text changes to 'Remove'
         cy.contains(this.selectors.inventoryItem, itemName).find('button').should('have.text', 'Remove')
     }
+    removeItemFromCart(itemName) {
+        cy.contains(this.selectors.inventoryItem, itemName).find('button').click()
+        // Validate button text changes to 'Add to cart'
+        cy.contains(this.selectors.inventoryItem, itemName).find('button').should('have.text', 'Add to cart')
+    }
     getCartBadgeCount(expectedCount) {
         return cy.get(this.selectors.shoppingCartBadge).should('be.visible').and('have.text', expectedCount)
+    }
+    verifyCartBadgeNotExist() {
+        cy.get(this.selectors.shoppingCartBadge).should('not.exist')
     }
     clickShoppingCartLink() {
         return cy.get(this.selectors.shoppingCartLink).click()
@@ -40,6 +48,9 @@ class InventoryPage {
             const expected = direction === 'hilo' ? [...actual].sort((a, b) => b - a) : [...actual].sort((a, b) => a - b)
             expect(actual).to.deep.equal(expected)
         })
+    }
+    clickProductTitle(itemName) {
+        cy.contains(this.selectors.itemName, itemName).click()
     }
 
 }
