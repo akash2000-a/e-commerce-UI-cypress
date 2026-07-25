@@ -1,17 +1,35 @@
 import LoginPage from "../../PageObjects/LoginPage"
-describe('Login Tests', () => {
-    it('Login with valid creds', () => {
-        cy.fixture('users').then((users) => {
+import users from "../../fixtures/users.json"
+describe('Login Tests-- Data driven', () => {
+    const scenarios = [
+        {
+            name: 'Login with valid credentials',
+            user: users.validUser,
+            expectedType: 'success',
+            expectedUrl: '/inventory.html'
+        },
+        {
+            name: 'Login with locked out credentials',
+            user: users.lockedUser,
+            expectedType: 'error',
+            expectedError: 'Epic sadface: Sorry, this user has been locked out.'
+        },
+        {
+            name: 'Login with invalid credentials',
+            user: users.invalidUser,
+            expectedType: 'error',
+            expectedError: 'Epic sadface: Username and password do not match any user in this service'
+        }
+    ]
+    scenarios.forEach((scenario) => {
+        it(scenario.name, () => {
             LoginPage.visit()
-            LoginPage.login(users.validUser.username, users.validUser.password)
-            cy.url().should('include', '/inventory.html')
-        })
-    })
-    it('Login with locked out creds', () => {
-        cy.fixture('users').then((users) => {
-            LoginPage.visit()
-            LoginPage.login(users.lockedUser.username, users.lockedUser.password)
-            LoginPage.getErrorMessage().should('be.visible').and('contain', 'Epic sadface: Sorry, this user has been locked out.')
+            LoginPage.login(scenario.user.username, scenario.user.password)
+            if (scenario.expectedType === 'success') {
+                cy.url().should('include', scenario.expectedUrl)
+            } else {
+                LoginPage.getErrorMessage().should('be.visible').and('contain', scenario.expectedError)
+            }
         })
     })
 })
