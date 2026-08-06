@@ -5,7 +5,8 @@
   "main": "cypress.config.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "cy:parallel": "cypress-parallel -s run -t 3 -d cypress/e2e"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "cypress": "^15.15.0",
     "cypress-mochawesome-reporter": "^5.0.0",
+    "cypress-parallel": "^0.15.0",
     "cypress-split": "^1.25.0"
   }
 }
