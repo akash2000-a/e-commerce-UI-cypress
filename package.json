@@ -6,7 +6,7 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cy:parallel": "cypress-parallel -s run -t 3 -d cypress/e2e"
+    "cy:parallel": "cypress-parallel -s cypress:run -t 3 -d cypress/e2e"
   },
   "repository": {
     "type": "git",
