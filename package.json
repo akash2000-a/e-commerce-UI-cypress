@@ -21,6 +21,7 @@
   "homepage": "https://github.com/akash2000-a/e-commerce-UI-cypress#readme",
   "devDependencies": {
     "cypress": "^15.15.0",
-    "cypress-mochawesome-reporter": "^5.0.0"
+    "cypress-mochawesome-reporter": "^5.0.0",
+    "cypress-split": "^1.25.0"
   }
 }

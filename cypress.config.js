@@ -11,10 +11,15 @@ module.exports = defineConfig({
     e2e: {
         baseUrl: 'https://www.saucedemo.com/',
         setupNodeEvents(on, config) {
-            // This is required to compile and save the HTML report files
+            // Register mochawesome reporter plugin
             require('cypress-mochawesome-reporter/plugin')(on);
+
+            // Register cypress-split plugin
+            require('cypress-split')(on, config);
+
+            // IMPORTANT: Return config so plugin updates take effect
+            return config;
         },
-        // Auto-retry failed tests in headless/CI mode to avoid flakiness
         retries: {
             runMode: 2,
             openMode: 0,
