@@ -1,3 +1,4 @@
+import 'cypress-mochawesome-reporter/register';
 import LoginPage from "../PageObjects/LoginPage"
 import InventoryPage from "../PageObjects/InventoryPage"
 

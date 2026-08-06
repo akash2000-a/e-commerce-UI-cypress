@@ -148,3 +148,8 @@ framework_building_guide.md
 
 # jsconfig
 jsconfig.json
+
+# Cypress test artifacts
+cypress/reports/
+cypress/videos/
+cypress/screenshots/
