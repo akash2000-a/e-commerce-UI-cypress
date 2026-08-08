@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Setup') { 
             steps { 
-                bat 'npm ci' 
+                bat 'docker compose pull' 
             } 
         }
         stage('Run Cypress Parallel') {
@@ -34,9 +34,8 @@ pipeline {
                             node {
                                 ws { // Jenkins automatically isolates workspaces
                                     checkout scm
-                                    bat 'npm ci'
                                     withEnv(["SPLIT=${numSplits}", "SPLIT_INDEX=${index}"]) {
-                                        bat 'npx cypress run'
+                                        bat 'docker compose run --rm -e SPLIT -e SPLIT_INDEX cypress'
                                     }
                                 }
                             }

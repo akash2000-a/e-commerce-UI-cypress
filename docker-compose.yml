@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  cypress:
+    image: cypress/included:13.14.0
+    container_name: cypress-tests
+    working_dir: /app
+    environment:
+      - CYPRESS_baseUrl=https://www.saucedemo.com/
+    volumes:
+      # Mount the project files from host to container
+      - .:/app
+      # Create an anonymous volume to isolate container node_modules from host node_modules
+      - /app/node_modules
+    # Run npm ci to install plugins inside the container's volume, then run cypress
+    entrypoint: sh -c "npm ci && cypress run"
